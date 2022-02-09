@@ -7,4 +7,8 @@ describe("The component is rendered", () => {
     it("renders the GameBoard component without crashing", () => {
         shallow(<GameBoard />);
     });
+
+    it("renders a Square component without crashing", () => {
+        shallow(<Square />);
+    })
 });
