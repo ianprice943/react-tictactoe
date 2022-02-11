@@ -5,6 +5,7 @@ import GameBoard from '../../components/GameBoard';
 import Square from '../../components/Square';
 import ResetGameButton from '../../components/ResetGameButton';
 import RewindGameButton from '../../components/RewindGameButton';
+import GameStatus from '../../components/GameStatus';
 
 describe("The component is rendered", () => {
     it("renders the GameBoard component without crashing", () => {
@@ -24,6 +25,6 @@ describe("The component is rendered", () => {
     });
 
     it("renders a GameStatus comonent without crashing", () =>{
-        shallow(<GameStatus />)
+        shallow(<GameStatus />);
     });
 });
