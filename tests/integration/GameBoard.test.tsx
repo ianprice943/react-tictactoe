@@ -10,6 +10,8 @@ import GameStatus from '../../components/GameStatus';
 describe("The component is rendered", () => {
     it("renders the GameBoard component without crashing, and ensures that the board has 9 Square components", () => {
         const board = shallow(<GameBoard />);
-        expect(board.find(Square).render().find('.square')).toHaveLength(9);
+        board.find('.square').forEach((square) => {
+            expect(square).toHaveLength(1);
+        });
     });
 });
