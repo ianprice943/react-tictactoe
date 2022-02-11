@@ -17,4 +17,8 @@ describe("The component is rendered", () => {
     it("renders a ResetGameButton component without crashing", () => {
         shallow(<ResetGameButton />);
     });
+
+    it("renders a RewindGameButton component without crashing", () => {
+        shallow(<RewindGameButton />);
+    });
 });
