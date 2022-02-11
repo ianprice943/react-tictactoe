@@ -3,6 +3,7 @@ import { shallow, mount, render } from 'enzyme';
 
 import GameBoard from '../../components/GameBoard';
 import Square from '../../components/Square';
+import ResetGameButton from '../../components/ResetGameButton';
 
 describe("The component is rendered", () => {
     it("renders the GameBoard component without crashing", () => {
