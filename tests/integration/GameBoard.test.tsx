@@ -15,3 +15,29 @@ describe("The component is rendered", () => {
         });
     });
 });
+
+describe("The GameBoard component state", () => {
+    let board: any;
+    const setState = jest.fn();
+    const useStateSpy = jest.spyOn(React, 'useState');
+    const mockBoardState = ["", "", "",
+                            "", "", "",
+                            "", "", ""];
+    useStateSpy.mockImplementation(() => [mockBoardState, setState] as any);
+    
+    const mockPlayerState = ["Player 1"];
+    useStateSpy.mockImplementation(() => [mockPlayerState, setState] as any);
+
+    beforeEach(() => {
+        board = shallow(<GameBoard />);
+    });
+    
+    afterEach(() => {
+        jest.clearAllMocks();
+    })
+    
+    it("should change the top left square's state to 'X' and the player state to 'Player 2'", ()=> {
+        board.find(Square).first().props().onClick();
+        expect(setState).toHaveBeenCalledWith(['X', 'Player 2']);
+    });
+});
