@@ -57,8 +57,12 @@ describe("The GameBoard component state", () => {
     });
 
     it("should reset the state of the board and the player", () => {
-        board.find(ResetGameButton).props.resetClickHandler();
+        board.find(ResetGameButton).props().resetClickHandler();
         expect(setState).toBeCalledWith(["", "", "", "", "", "", "", "", ""]);
+    });
+    
+    it("should reset the player to 'Player 1'", () => {
+        board.find(ResetGameButton).props().resetClickHandler();
         expect(setState).toBeCalledWith("Player 1");
     });
 });
