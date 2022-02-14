@@ -2,7 +2,7 @@ import React from 'react';
 
 interface squareProps {
     value: string,
-    clickHandler: (e: React.MouseEvent<HTMLDivElement>) => void
+    clickHandler: () => void
 }
 
 const Square = (props: squareProps) => {

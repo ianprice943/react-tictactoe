@@ -9,8 +9,7 @@ const GameBoard = () => {
 
                                                           const [playerTurn, setPlayerTurn] = useState<string>("Player 1");
 
-    const handleClick = (event: React.MouseEvent<HTMLDivElement>, squareNum: number) => {
-        // event.stopPropagation();
+    const handleClick = (squareNum: number) => {
         const gameStateClone = gameState.slice();
         if(playerTurn === 'Player 2') {
             gameStateClone[squareNum] = 'O';
@@ -25,15 +24,15 @@ const GameBoard = () => {
 
     return (
         <div id="game-board">
-            <Square value={gameState[0]} clickHandler={(e) => handleClick(e, 0)} />
-            <Square value={gameState[1]} clickHandler={(e) => handleClick(e, 1)} />
-            <Square value={gameState[2]} clickHandler={(e) => handleClick(e, 2)} />
-            <Square value={gameState[3]} clickHandler={(e) => handleClick(e, 3)} />
-            <Square value={gameState[4]} clickHandler={(e) => handleClick(e, 4)} />
-            <Square value={gameState[5]} clickHandler={(e) => handleClick(e, 5)} />
-            <Square value={gameState[6]} clickHandler={(e) => handleClick(e, 6)} />
-            <Square value={gameState[7]} clickHandler={(e) => handleClick(e, 7)} />
-            <Square value={gameState[8]} clickHandler={(e) => handleClick(e, 8)} />
+            <Square value={gameState[0]} clickHandler={() => handleClick(0)} />
+            <Square value={gameState[1]} clickHandler={() => handleClick(1)} />
+            <Square value={gameState[2]} clickHandler={() => handleClick(2)} />
+            <Square value={gameState[3]} clickHandler={() => handleClick(3)} />
+            <Square value={gameState[4]} clickHandler={() => handleClick(4)} />
+            <Square value={gameState[5]} clickHandler={() => handleClick(5)} />
+            <Square value={gameState[6]} clickHandler={() => handleClick(6)} />
+            <Square value={gameState[7]} clickHandler={() => handleClick(7)} />
+            <Square value={gameState[8]} clickHandler={() => handleClick(8)} />
             <div id="game-state-buttons">
                 <ResetGameButton />
             </div>
