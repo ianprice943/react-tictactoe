@@ -8,11 +8,20 @@ import RewindGameButton from '../../components/RewindGameButton';
 import GameStatus from '../../components/GameStatus';
 
 describe("The component is rendered", () => {
+    let board: any;
+
+    beforeEach(() => {
+        board = shallow(<GameBoard />)
+    });
+    
     it("renders the GameBoard component without crashing, and ensures that the board has 9 Square components", () => {
-        const board = shallow(<GameBoard />);
-        board.find('.square').forEach((square) => {
+        board.find('.square').forEach((square: any) => {
             expect(square).toHaveLength(1);
         });
+    });
+
+    it("renders the ResetGameButton component inside the GameBoard component without crashing", () => {
+        expect(board.find(ResetGameButton)).toHaveLength(1);
     });
 });
 
