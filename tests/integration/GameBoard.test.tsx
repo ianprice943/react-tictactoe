@@ -45,9 +45,14 @@ describe("The GameBoard component state", () => {
         jest.clearAllMocks();
     })
     
-    it("should change the top left square's state to 'X' and the player state to 'Player 2'", ()=> {
+    it("should change the top left square's state to 'X'", ()=> {
         board.find(Square).first().props().clickHandler();
         expect(setState).toHaveBeenCalledWith(['X']);
+        
+    });
+
+    it("should set the player state to 'Player 2'", () => {
+        board.find(Square).first().props().clickHandler();
         expect(setState).toHaveBeenCalledWith("Player 2");
     });
 
