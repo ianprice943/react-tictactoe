@@ -155,4 +155,15 @@ describe("The GameBoard component state", () => {
         board.find(Square).at(7).props().clickHandler();
         expect(board.find(GameStatus).props().currentStatus).toBe("Cat's Game!");
     });
+
+    it("should stop a player from clicking on an empty square if a winner has been determined", () => {
+        board.find(Square).at(0).props().clickHandler();
+        board.find(Square).at(3).props().clickHandler();
+        board.find(Square).at(1).props().clickHandler();
+        board.find(Square).at(4).props().clickHandler();
+        board.find(Square).at(2).props().clickHandler();
+        expect(board.find(GameStatus).props().currentStatus).toBe("Player 1 Wins!");
+        board.find(Square).at(5).props().clickHandler();
+        expect(board.find(Square).at(5).props().value).toBe("");
+    });
 });
