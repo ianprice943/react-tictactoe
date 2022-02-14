@@ -133,4 +133,13 @@ describe("The GameBoard component state", () => {
         board.find(Square).at(8).props().clickHandler();
         expect(board.find(GameStatus).props().currentStatus).toBe("Player 1 Wins!");
     });
+
+    it("should correctly determine a winner with a right to left diagonal win condition", () => {
+        board.find(Square).at(2).props().clickHandler();
+        board.find(Square).at(1).props().clickHandler();
+        board.find(Square).at(4).props().clickHandler();
+        board.find(Square).at(0).props().clickHandler();
+        board.find(Square).at(6).props().clickHandler();
+        expect(board.find(GameStatus).props().currentStatus).toBe("Player 1 Wins!");
+    });
 });
