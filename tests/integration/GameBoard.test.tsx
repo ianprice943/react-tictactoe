@@ -65,4 +65,8 @@ describe("The GameBoard component state", () => {
         board.find(ResetGameButton).props().resetClickHandler();
         expect(setState).toBeCalledWith("Player 1");
     });
+
+    it("should display the current player's turn in GameStatus", () => {
+        expect(board.find(GameStatus).render().find('#game-status').html()).toContain("Player 1");
+    });
 });
