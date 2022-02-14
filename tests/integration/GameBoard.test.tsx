@@ -37,6 +37,9 @@ describe("The GameBoard component state", () => {
     const mockPlayerState = ["Player 1"];
     useStateSpy.mockImplementation(() => [mockPlayerState, setState] as any);
 
+    const mockGameStatus = ["Player 1's Turn"];
+    useStateSpy.mockImplementation(() => [mockGameStatus, setState] as any);
+
     beforeEach(() => {
         board = shallow(<GameBoard />);
     });
@@ -71,6 +74,6 @@ describe("The GameBoard component state", () => {
     });
 
     it("should add extra grammar and syntax around the player's turn in GameStatus",  () => {
-        expect(board.find(GameStatus).html()).toContain("Player 1's Turn");
+        expect(board.find(GameStatus).html()).toContain("Player 1&#x27;s Turn");
     });
 });

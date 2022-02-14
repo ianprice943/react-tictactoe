@@ -8,6 +8,7 @@ const GameBoard = () => {
                                                           "", "", "",
                                                           "", "", ""]);
     const [playerTurn, setPlayerTurn] = useState<string>("Player 1");
+    const [gameStatus, setGameStatus] = useState<string>("Player 1's Turn");
 
     const handleClick = (squareNum: number) => {
         const gameStateClone = gameState.slice();
@@ -15,10 +16,12 @@ const GameBoard = () => {
             gameStateClone[squareNum] = 'O';
             setGameState(gameStateClone);
             setPlayerTurn('Player 1');
+            renderStatus('Player 1', false);
         } else {
             gameStateClone[squareNum] = 'X';
             setGameState(gameStateClone);
             setPlayerTurn('Player 2');
+            renderStatus('Player 2', false);
         }
     }
 
@@ -26,8 +29,17 @@ const GameBoard = () => {
         let gameStateClone = ["", "", "", "", "", "", "", "", ""];
         setGameState(gameStateClone);
         setPlayerTurn('Player 1');
+        renderStatus('Player 1', false);
     }
 
+    const renderStatus = (status: string, winner: boolean) => {
+        if (!winner && status === "Player 2") {
+            setGameStatus("Player 2's Turn");
+        } else {
+            setGameStatus("Player 1's Turn");
+        }
+    }
+    
     return (
         <div id="game-board">
             <Square value={gameState[0]} clickHandler={() => handleClick(0)} />
@@ -42,7 +54,7 @@ const GameBoard = () => {
             <div id="game-state-buttons">
                 <ResetGameButton resetClickHandler={handleResetClick} />
             </div>
-            <GameStatus currentStatus={playerTurn} />
+            <GameStatus currentStatus={gameStatus} />
         </div>
     )
 }
