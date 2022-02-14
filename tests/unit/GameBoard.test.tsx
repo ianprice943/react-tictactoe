@@ -13,7 +13,7 @@ describe("The component is rendered", () => {
     });
 
     it("renders a Square component without crashing", () => {
-        shallow(<Square />);
+        shallow(<Square value="" clickHandler={() => {}} />);
     });
 
     it("renders a ResetGameButton component without crashing", () => {

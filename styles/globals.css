@@ -14,3 +14,58 @@ a {
 * {
   box-sizing: border-box;
 }
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 1em;
+}
+
+#game-board div:first-child {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+#game-board div:nth-child(2) {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+#game-board div:nth-child(3) {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+#game-board div:nth-child(4) {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+#game-board div:nth-child(5) {
+  border: 1px solid black;
+}
+#game-board div:nth-child(6) {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+#game-board div:nth-child(7) {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+#game-board div:nth-child(8) {
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+#game-board div:last-child {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.square {
+  width: 20vw;
+  height: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10vw;
+}
