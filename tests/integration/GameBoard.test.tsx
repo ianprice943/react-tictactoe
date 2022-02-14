@@ -80,4 +80,13 @@ describe("The GameBoard component state", () => {
         expect(board.find(GameStatus).props().currentStatus).toBe("Player 1 Wins!");
     });
 
+    it("should correctly determine a winner with a middle horizontal win condition", () => {
+        board.find(Square).at(3).props().clickHandler();
+        board.find(Square).at(0).props().clickHandler();
+        board.find(Square).at(4).props().clickHandler();
+        board.find(Square).at(1).props().clickHandler();
+        board.find(Square).at(5).props().clickHandler();
+        expect(board.find(GameStatus).props().currentStatus).toBe("Player 1 Wins!");
+    });
+
 });
