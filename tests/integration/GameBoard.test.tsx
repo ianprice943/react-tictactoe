@@ -57,11 +57,18 @@ describe("The GameBoard component state", () => {
         expect(board.find(GameStatus).props().currentStatus).toBe("Player 1's Turn");
     });
 
-    // it("should stop the user from overwriting a square that's already been filled", () => {
-    //     board.find(Square).first().props().clickHandler();
-    //     expect(setState).toHaveBeenCalledWith(['X']);
-    //     board.find(Square).first().props().clickHandler();
-    //     expect(setState).not.toHaveBeenCalledTimes(6);
-    // });
+    it("should stop the user from overwriting a square that's already been filled", () => {
+        board.find(Square).first().props().clickHandler();
+        expect(board.find(Square).first().props().value).toBe("X");
+        board.find(Square).first().props().clickHandler();
+        expect(board.find(Square).first().props().value).toBe("X");
+    });
+
+    it("should stop the current player from changing if a player clicks a square that's already been filled", () => {
+        board.find(Square).first().props().clickHandler();
+        expect(board.find(GameStatus).props().currentStatus).toBe("Player 2's Turn");
+        board.find(Square).first().props().clickHandler();
+        expect(board.find(GameStatus).props().currentStatus).toBe("Player 2's Turn");
+    });
 
 });
