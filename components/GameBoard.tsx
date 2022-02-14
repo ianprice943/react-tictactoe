@@ -12,12 +12,12 @@ const GameBoard = () => {
 
     const handleClick = (squareNum: number) => {
         const gameStateClone = gameState.slice();
-        if(playerTurn === 'Player 2') {
+        if(playerTurn === 'Player 2' && gameState[squareNum] === "") {
             gameStateClone[squareNum] = 'O';
             setGameState(gameStateClone);
             setPlayerTurn('Player 1');
             renderStatus('Player 1', false);
-        } else {
+        } else if(gameState[squareNum] === "") {
             gameStateClone[squareNum] = 'X';
             setGameState(gameStateClone);
             setPlayerTurn('Player 2');
@@ -26,7 +26,7 @@ const GameBoard = () => {
     }
 
     const handleResetClick = () => {
-        let gameStateClone = ["", "", "", "", "", "", "", "", ""];
+        const gameStateClone = ["", "", "", "", "", "", "", "", ""];
         setGameState(gameStateClone);
         setPlayerTurn('Player 1');
         renderStatus('Player 1', false);
@@ -35,7 +35,7 @@ const GameBoard = () => {
     const renderStatus = (status: string, winner: boolean) => {
         if (!winner && status === "Player 2") {
             setGameStatus("Player 2's Turn");
-        } else {
+        } else if(!winner) {
             setGameStatus("Player 1's Turn");
         }
     }
