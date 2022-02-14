@@ -69,4 +69,8 @@ describe("The GameBoard component state", () => {
     it("should display the current player's turn in GameStatus", () => {
         expect(board.find(GameStatus).html()).toContain("Player 1");
     });
+
+    it("should add extra grammar and syntax around the player's turn in GameStatus",  () => {
+        expect(board.find(GameStatus).html()).toContain("Player 1's Turn");
+    });
 });
