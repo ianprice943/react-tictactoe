@@ -56,11 +56,10 @@ a {
   border-top: 1px solid black;
   border-right: 1px solid black;
 }
-#game-board div:last-child {
+#game-board div:nth-child(9) {
   border-top: 1px solid black;
   border-left: 1px solid black;
 }
-
 .square {
   width: 20vw;
   height: 20vw;
@@ -68,4 +67,11 @@ a {
   justify-content: center;
   align-items: center;
   font-size: 10vw;
+}
+
+#game-state-buttons {
+  grid-column: 1 / -1;
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
 }

@@ -22,6 +22,12 @@ const GameBoard = () => {
         }
     }
 
+    const handleResetClick = () => {
+        let gameStateClone = ["", "", "", "", "", "", "", "", ""];
+        setGameState(gameStateClone);
+        setPlayerTurn('Player 1');
+    }
+
     return (
         <div id="game-board">
             <Square value={gameState[0]} clickHandler={() => handleClick(0)} />
@@ -34,7 +40,7 @@ const GameBoard = () => {
             <Square value={gameState[7]} clickHandler={() => handleClick(7)} />
             <Square value={gameState[8]} clickHandler={() => handleClick(8)} />
             <div id="game-state-buttons">
-                <ResetGameButton />
+                <ResetGameButton resetClickHandler={handleResetClick} />
             </div>
         </div>
     )
