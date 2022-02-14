@@ -25,6 +25,6 @@ describe("The component is rendered", () => {
     });
 
     it("renders a GameStatus component without crashing", () =>{
-        shallow(<GameStatus />);
+        shallow(<GameStatus currentStatus="" />);
     });
 });

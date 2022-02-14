@@ -67,6 +67,6 @@ describe("The GameBoard component state", () => {
     });
 
     it("should display the current player's turn in GameStatus", () => {
-        expect(board.find(GameStatus).render().find('#game-status').html()).toContain("Player 1");
+        expect(board.find(GameStatus).html()).toContain("Player 1");
     });
 });

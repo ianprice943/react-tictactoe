@@ -1,9 +1,13 @@
 import React from 'react';
 
-const GameStatus = () => {
+interface gameStatusProps {
+    currentStatus: string
+}
+
+const GameStatus = (props: gameStatusProps) => {
     return (
         <div id="game-status">
-
+            {props.currentStatus}
         </div>
     )
 }

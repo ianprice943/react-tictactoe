@@ -1,4 +1,5 @@
 import React, { ReactEventHandler, useState } from 'react';
+import GameStatus from './GameStatus';
 import ResetGameButton from './ResetGameButton';
 import Square from './Square';
 
@@ -6,8 +7,7 @@ const GameBoard = () => {
     const [gameState, setGameState] = useState<string[]>(["", "", "",
                                                           "", "", "",
                                                           "", "", ""]);
-
-                                                          const [playerTurn, setPlayerTurn] = useState<string>("Player 1");
+    const [playerTurn, setPlayerTurn] = useState<string>("Player 1");
 
     const handleClick = (squareNum: number) => {
         const gameStateClone = gameState.slice();
@@ -42,6 +42,7 @@ const GameBoard = () => {
             <div id="game-state-buttons">
                 <ResetGameButton resetClickHandler={handleResetClick} />
             </div>
+            <GameStatus currentStatus={playerTurn} />
         </div>
     )
 }
