@@ -11,11 +11,14 @@ const GameBoard = () => {
 
     const handleClick = (squareNum: number) => {
         const gameStateClone = gameState.slice();
-        if(playerTurn === 'Player 2' && gameState[squareNum] === "") {
+        if(checkForWinner() !== "" || gameState[squareNum] !== "") {
+            return;
+        }
+        if(playerTurn === 'Player 2') {
             gameStateClone[squareNum] = 'O';
             setGameState(gameStateClone);
             setPlayerTurn('Player 1');
-        } else if(gameState[squareNum] === "") {
+        } else {
             gameStateClone[squareNum] = 'X';
             setGameState(gameStateClone);
             setPlayerTurn('Player 2');
@@ -26,18 +29,6 @@ const GameBoard = () => {
         const gameStateClone = ["", "", "", "", "", "", "", "", ""];
         setGameState(gameStateClone);
         setPlayerTurn('Player 1');
-    }
-
-    const renderStatus = (status: string, winner: boolean) => {
-        if (!winner && status === "Player 2") {
-            "Player 2's Turn";
-        } else if(!winner) {
-            "Player 1's Turn"
-        } else if(winner && status === "Player 2") {
-            "Player 2 Wins!"
-        } else {
-            "Player 1 Wins!"
-        }
     }
 
     const checkForWinner = () => {
