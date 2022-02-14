@@ -61,13 +61,24 @@ const GameBoard = () => {
                 }
             }
         }
+
+        let numEmptySquares = gameState.reduce((accumulator, square) => {
+            return accumulator + (square === "" ? 1 : 0);
+        }, 0)
+
+        if(numEmptySquares === 0) {
+            return "Cat's Game!";
+        }
+
         return "";
     }
 
     const winner = checkForWinner();
     let status;
-    if (winner !== "") {
+    if (winner === "Player 1" || winner === "Player 2") {
         status = `${winner} Wins!`;
+    } else if(winner === "Cat's Game!") {
+        status = winner;
     } else {
         status = `${playerTurn}'s Turn`;
     }

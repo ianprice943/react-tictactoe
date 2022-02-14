@@ -145,14 +145,14 @@ describe("The GameBoard component state", () => {
 
     it("should correctly determine a cat's game", () => {
         board.find(Square).at(0).props().clickHandler();
-        board.find(Square).at(1).props().clickHandler();
-        board.find(Square).at(2).props().clickHandler();
-        board.find(Square).at(3).props().clickHandler();
         board.find(Square).at(4).props().clickHandler();
+        board.find(Square).at(1).props().clickHandler();
+        board.find(Square).at(3).props().clickHandler();
         board.find(Square).at(5).props().clickHandler();
+        board.find(Square).at(2).props().clickHandler();
         board.find(Square).at(6).props().clickHandler();
-        board.find(Square).at(7).props().clickHandler();
         board.find(Square).at(8).props().clickHandler();
+        board.find(Square).at(7).props().clickHandler();
         expect(board.find(GameStatus).props().currentStatus).toBe("Cat's Game!");
     });
 });
