@@ -48,7 +48,8 @@ const GameBoard = () => {
             [0,3,6],
             [1,4,7],
             [2,5,8],
-            [0,4,8]
+            [0,4,8],
+            [2,4,6]
         ];
         for(let i = 0; i < winningLines.length; i++) {
             const [first, second, third] = winningLines[i];
