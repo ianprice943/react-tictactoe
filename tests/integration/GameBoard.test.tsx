@@ -41,4 +41,10 @@ describe("The GameBoard component state", () => {
         expect(setState).toHaveBeenCalledWith(['X']);
         expect(setState).toHaveBeenCalledWith("Player 2");
     });
+
+    it("should reset the state of the board and the player", () => {
+        board.find(ResetGameButton).props.resetClickHandler();
+        expect(setState).toBeCalledWith(["", "", "", "", "", "", "", "", ""]);
+        expect(setState).toBeCalledWith("Player 1");
+    });
 });
