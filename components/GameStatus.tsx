@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface gameStatusProps {
+interface GameStatusProps {
     currentStatus: string
 }
 
-const GameStatus = (props: gameStatusProps) => {
+const GameStatus = (props: GameStatusProps) => {
     return (
         <div id="game-status">
             {props.currentStatus}
