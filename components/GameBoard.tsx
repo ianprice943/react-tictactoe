@@ -11,14 +11,14 @@ const GameBoard = () => {
     const handleClick = (event: React.MouseEvent<HTMLDivElement>, squareNum: number) => {
         // event.stopPropagation();
         const gameStateClone = gameState.slice();
-        if(playerTurn === 'Player 1') {
-            gameStateClone[squareNum] = 'X';
-            setGameState(gameStateClone);
-            setPlayerTurn('Player 2');
-        } else {
+        if(playerTurn === 'Player 2') {
             gameStateClone[squareNum] = 'O';
             setGameState(gameStateClone);
             setPlayerTurn('Player 1');
+        } else {
+            gameStateClone[squareNum] = 'X';
+            setGameState(gameStateClone);
+            setPlayerTurn('Player 2');
         }
     }
 

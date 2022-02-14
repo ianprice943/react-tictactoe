@@ -38,6 +38,7 @@ describe("The GameBoard component state", () => {
     
     it("should change the top left square's state to 'X' and the player state to 'Player 2'", ()=> {
         board.find(Square).first().props().clickHandler();
-        expect(setState).toHaveBeenCalledWith(['X', "Player 2"]);
+        expect(setState).toHaveBeenCalledWith(['X']);
+        expect(setState).toHaveBeenCalledWith("Player 2");
     });
 });
