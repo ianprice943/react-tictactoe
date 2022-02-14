@@ -76,4 +76,12 @@ describe("The GameBoard component state", () => {
     it("should add extra grammar and syntax around the player's turn in GameStatus",  () => {
         expect(board.find(GameStatus).html()).toContain("Player 1&#x27;s Turn");
     });
+
+    it("should stop the user from overwriting a square that's already been filled", () => {
+        board.find(Square).first().props().clickHandler();
+        expect(setState).toHaveBeenCalledWith(['X']);
+        board.find(Square).first().props().clickHandler();
+        expect(setState).not.toHaveBeenCalledTimes(6);
+    });
+
 });
