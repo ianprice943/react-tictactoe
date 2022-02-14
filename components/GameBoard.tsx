@@ -43,11 +43,11 @@ const GameBoard = () => {
     const checkForWinner = () => {
         const winningLines = [
             [0,1,2],
-            [3,4,5]
+            [3,4,5],
+            [6,7,8]
         ];
         for(let i = 0; i < winningLines.length; i++) {
             const [first, second, third] = winningLines[i];
-            console.log(first, second, third);
             if(gameState[first] !== "" && gameState[first] === gameState[second] && gameState[first] === gameState[third]) {
                 if(gameState[first] === "X") {
                     return "Player 1";
