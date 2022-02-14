@@ -1,4 +1,4 @@
-import React, { ReactEventHandler, useState } from 'react';
+import React, { ReactEventHandler, useEffect, useState } from 'react';
 import GameStatus from './GameStatus';
 import ResetGameButton from './ResetGameButton';
 import Square from './Square';
@@ -8,7 +8,6 @@ const GameBoard = () => {
                                                           "", "", "",
                                                           "", "", ""]);
     const [playerTurn, setPlayerTurn] = useState<string>("Player 1");
-    const [gameStatus, setGameStatus] = useState<string>("Player 1's Turn");
 
     const handleClick = (squareNum: number) => {
         const gameStateClone = gameState.slice();
@@ -16,12 +15,10 @@ const GameBoard = () => {
             gameStateClone[squareNum] = 'O';
             setGameState(gameStateClone);
             setPlayerTurn('Player 1');
-            renderStatus('Player 1', false);
         } else if(gameState[squareNum] === "") {
             gameStateClone[squareNum] = 'X';
             setGameState(gameStateClone);
             setPlayerTurn('Player 2');
-            renderStatus('Player 2', false);
         }
     }
 
@@ -29,15 +26,45 @@ const GameBoard = () => {
         const gameStateClone = ["", "", "", "", "", "", "", "", ""];
         setGameState(gameStateClone);
         setPlayerTurn('Player 1');
-        renderStatus('Player 1', false);
     }
 
     const renderStatus = (status: string, winner: boolean) => {
         if (!winner && status === "Player 2") {
-            setGameStatus("Player 2's Turn");
+            "Player 2's Turn";
         } else if(!winner) {
-            setGameStatus("Player 1's Turn");
+            "Player 1's Turn"
+        } else if(winner && status === "Player 2") {
+            "Player 2 Wins!"
+        } else {
+            "Player 1 Wins!"
         }
+    }
+
+    const checkForWinner = () => {
+        console.log(gameState);
+        const winningLines = [
+            [0,1,2]
+        ];
+        for(let i = 0; i < winningLines.length; i++) {
+            const [first, second, third] = winningLines[i];
+            if(gameState[first] !== "" && gameState[first] === gameState[second] && gameState[first] === gameState[third]) {
+                if(gameState[first] === "X") {
+                    return "Player 1";
+                } else {
+                    return "Player 2";
+                }
+            } else {
+                return "";
+            }
+        }
+    }
+
+    const winner = checkForWinner();
+    let status;
+    if (winner !== "") {
+        status = `${winner} Wins!`;
+    } else {
+        status = `${playerTurn}'s Turn`;
     }
     
     return (
@@ -54,7 +81,7 @@ const GameBoard = () => {
             <div id="game-state-buttons">
                 <ResetGameButton resetClickHandler={handleResetClick} />
             </div>
-            <GameStatus currentStatus={gameStatus} />
+            <GameStatus currentStatus={status} />
         </div>
     )
 }
