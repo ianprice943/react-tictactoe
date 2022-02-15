@@ -211,4 +211,13 @@ describe("The GameBoard component state", () => {
         board.find(RewindGameButton).props().rewindClickHandler();
         expect(board.find(Square).at(2).props().value).toBe("");
     });
+
+    it("should rewind the game two steps", () => {
+        board.find(Square).at(0).props().clickHandler();
+        board.find(Square).at(4).props().clickHandler();
+        for(let i = 0; i < 2; i++) {
+            board.find(RewindGameButton).props().rewindClickHandler();
+        }
+        expect(board.find(Square).at(0).props().value).toBe("");
+    });
 });
