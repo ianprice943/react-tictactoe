@@ -201,6 +201,11 @@ describe("The GameBoard component state", () => {
         expect(board.find(RewindGameButton).props().rewindClickHandler).toBeTruthy();
     });
 
+    it("should do nothing when RewindGameButton is clicked at the start of the game", () => {
+        board.find(RewindGameButton).props().rewindClickHandler();
+        expect(board.find(Square).at(2).props().value).toBe("");
+    });
+
     it("should rewind the game state one step", () => {
         board.find(Square).at(2).props().clickHandler();
         board.find(RewindGameButton).props().rewindClickHandler();
