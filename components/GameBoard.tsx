@@ -40,7 +40,9 @@ const GameBoard = () => {
 
     const handleRewindClick = () => {
         const gameStateHistoryClone = gameStateHistory.slice();
-        
+        if(gameStateHistoryClone.length === 1) {
+            return;
+        }
         gameStateHistoryClone.pop();
         setGameState(gameStateHistoryClone[gameStateHistoryClone.length - 1]);
         setGameStateHistory(gameStateHistoryClone);
