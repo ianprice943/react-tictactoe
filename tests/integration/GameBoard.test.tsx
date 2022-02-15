@@ -37,7 +37,6 @@ describe("The GameBoard component state", () => {
     })
     
     it("should change the top left square's state to 'X'", ()=> {
-
         board.find(Square).first().props().clickHandler();
         expect(board.find(Square).first().props().value).toBe("X");
     });
@@ -191,5 +190,9 @@ describe("The GameBoard component state", () => {
         board.find(Square).forEach((square: any) => {
             expect(square.props().value).toBe("");
         });
+    });
+
+    it("should render the RewindGameButton component", () => {
+        expect(board.find(RewindGameButton).html()).toContain("Rewind Game");
     });
 });
