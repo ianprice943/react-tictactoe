@@ -356,4 +356,16 @@ describe("The GameBoard component state", () => {
         expect(board.find(Square).at(8).props().value).toBe("");
         expect(board.find(Square).at(7).props().value).toBe("");
     });
+
+    it("should let you fill in a square which had its value rewound", () => {
+        board.find(Square).at(0).props().clickHandler(); // P1
+        board.find(Square).at(4).props().clickHandler(); // P2
+        board.find(Square).at(1).props().clickHandler(); // P1
+        board.find(RewindGameButton).props().rewindClickHandler();
+        board.find(RewindGameButton).props().rewindClickHandler();
+        board.find(Square).at(1).props().clickHandler(); // P2
+        board.find(Square).at(4).props().clickHandler(); // P1
+        expect(board.find(Square).at(4).props().value).toBe("X");
+        expect(board.find(Square).at(1).props().value).toBe("O");
+    });
 });
