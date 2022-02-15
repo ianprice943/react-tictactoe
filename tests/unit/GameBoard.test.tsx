@@ -21,7 +21,7 @@ describe("The component is rendered", () => {
     });
 
     it("renders a RewindGameButton component without crashing", () => {
-        shallow(<RewindGameButton />);
+        shallow(<RewindGameButton rewindClickHandler={() => {}} />);
     });
 
     it("renders a GameStatus component without crashing", () =>{

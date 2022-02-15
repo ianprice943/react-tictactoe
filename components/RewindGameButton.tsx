@@ -1,8 +1,12 @@
 import React from 'react';
 
-const RewindGameButton = () => {
+interface RewindProps {
+    rewindClickHandler: () => void
+}
+
+const RewindGameButton = (props: RewindProps) => {
     return (
-        <button id="rewind-game">
+        <button id="rewind-game" onClick={props.rewindClickHandler}>
             Rewind Game
         </button>
     )

@@ -9,9 +9,11 @@ const GameBoard = () => {
                                                           "", "", "",
                                                           "", "", ""]);
     const [playerTurn, setPlayerTurn] = useState<string>("Player 1");
+    const [gameStateHistory, setGameStateHistory] = useState<string[][]>([gameState]);
 
     const handleClick = (squareNum: number) => {
         const gameStateClone = gameState.slice();
+        const gameStateHistoryClone = gameStateHistory.slice();
         if(checkForWinner() !== "" || gameState[squareNum] !== "") {
             return;
         }
@@ -19,10 +21,14 @@ const GameBoard = () => {
             gameStateClone[squareNum] = 'O';
             setGameState(gameStateClone);
             setPlayerTurn('Player 1');
+            gameStateHistoryClone.push(gameStateClone);
+            setGameStateHistory(gameStateHistoryClone);
         } else {
             gameStateClone[squareNum] = 'X';
             setGameState(gameStateClone);
             setPlayerTurn('Player 2');
+            gameStateHistoryClone.push(gameStateClone);
+            setGameStateHistory(gameStateHistoryClone);
         }
     }
 
@@ -31,6 +37,19 @@ const GameBoard = () => {
         setGameState(gameStateClone);
         setPlayerTurn('Player 1');
     }
+
+    const handleRewindClick = () => {
+        const gameStateHistoryClone = gameStateHistory.slice();
+        
+        gameStateHistoryClone.pop();
+        setGameState(gameStateHistoryClone[gameStateHistoryClone.length - 1]);
+        setGameStateHistory(gameStateHistoryClone);
+        if(playerTurn === 'Player 1') {
+            setPlayerTurn('Player 2');
+        } else {
+            setPlayerTurn('Player 1');
+        }
+    } 
 
     const checkForWinner = () => {
         const winningLines = [
@@ -88,7 +107,7 @@ const GameBoard = () => {
             <Square value={gameState[8]} clickHandler={() => handleClick(8)} />
             <div id="game-state-buttons">
                 <ResetGameButton resetClickHandler={handleResetClick} />
-                <RewindGameButton />
+                <RewindGameButton rewindClickHandler={handleRewindClick} />
             </div>
             <GameStatus currentStatus={status} />
         </div>
