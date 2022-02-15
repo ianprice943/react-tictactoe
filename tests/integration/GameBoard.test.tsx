@@ -179,4 +179,17 @@ describe("The GameBoard component state", () => {
             expect(square.props().value).toBe("");
         });
     });
+
+    it("should reset the game after a winner is declared", () => {
+        board.find(Square).at(2).props().clickHandler();
+        board.find(Square).at(1).props().clickHandler();
+        board.find(Square).at(5).props().clickHandler();
+        board.find(Square).at(0).props().clickHandler();
+        board.find(Square).at(8).props().clickHandler();
+        expect(board.find(GameStatus).props().currentStatus).toBe("Player 1 Wins!");
+        board.find(ResetGameButton).props().resetClickHandler();
+        board.find(Square).forEach((square: any) => {
+            expect(square.props().value).toBe("");
+        });
+    });
 });
