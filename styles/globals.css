@@ -76,6 +76,21 @@ a {
   justify-content: center;
 }
 
+#reset-game {
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  padding: .25em;
+  background-color: #B40000;
+  border: 1px solid #B40000;
+  color: #FFFFFF;
+  font-size: 1em;
+}
+#reset-game:hover {
+  background-color: #FF0000;
+  border: 1px solid #000;
+}
+
 #game-status {
   grid-column: 1 / -1;
   text-align: center;
