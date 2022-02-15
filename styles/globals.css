@@ -84,6 +84,7 @@ a {
   border: 1px solid #B40000;
   color: #FFFFFF;
   font-size: 1em;
+  margin-right: 2em;
 }
 #reset-game:hover {
   background-color: #FF0000;
@@ -92,6 +93,7 @@ a {
 
 #rewind-game {
   outline: 0;
+  border-radius: 5px;
   padding: .25em;
   border: 1px solid #005F7A;
   background-color: #005F7A;
