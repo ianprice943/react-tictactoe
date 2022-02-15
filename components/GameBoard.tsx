@@ -1,6 +1,7 @@
 import React, { ReactEventHandler, useEffect, useState } from 'react';
 import GameStatus from './GameStatus';
 import ResetGameButton from './ResetGameButton';
+import RewindGameButton from './RewindGameButton';
 import Square from './Square';
 
 const GameBoard = () => {
@@ -87,6 +88,7 @@ const GameBoard = () => {
             <Square value={gameState[8]} clickHandler={() => handleClick(8)} />
             <div id="game-state-buttons">
                 <ResetGameButton resetClickHandler={handleResetClick} />
+                <RewindGameButton />
             </div>
             <GameStatus currentStatus={status} />
         </div>
