@@ -23,6 +23,10 @@ describe("The component is rendered", () => {
     it("renders the ResetGameButton component inside the GameBoard component without crashing", () => {
         expect(board.find(ResetGameButton)).toHaveLength(1);
     });
+
+    it("should render the RewindGameButton component", () => {
+        expect(board.find(RewindGameButton).html()).toContain("Rewind Game");
+    });
 });
 
 describe("The GameBoard component state", () => {
@@ -190,10 +194,6 @@ describe("The GameBoard component state", () => {
         board.find(Square).forEach((square: any) => {
             expect(square.props().value).toBe("");
         });
-    });
-
-    it("should render the RewindGameButton component", () => {
-        expect(board.find(RewindGameButton).html()).toContain("Rewind Game");
     });
 
     it("should rewind the game state one step", () => {
