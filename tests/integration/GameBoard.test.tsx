@@ -290,4 +290,24 @@ describe("The GameBoard component state", () => {
         expect(board.find(Square).at(5).props().value).toBe("");
         expect(board.find(Square).at(2).props().value).toBe("");
     });
+
+    it("should rewind the game seven steps", () => {
+        board.find(Square).at(0).props().clickHandler();
+        board.find(Square).at(4).props().clickHandler();
+        board.find(Square).at(1).props().clickHandler();
+        board.find(Square).at(3).props().clickHandler();
+        board.find(Square).at(5).props().clickHandler();
+        board.find(Square).at(2).props().clickHandler();
+        board.find(Square).at(6).props().clickHandler();
+        for(let i = 0; i < 7; i++) {
+            board.find(RewindGameButton).props().rewindClickHandler();
+        }
+        expect(board.find(Square).at(4).props().value).toBe("");
+        expect(board.find(Square).at(0).props().value).toBe("");
+        expect(board.find(Square).at(1).props().value).toBe("");
+        expect(board.find(Square).at(3).props().value).toBe("");
+        expect(board.find(Square).at(5).props().value).toBe("");
+        expect(board.find(Square).at(2).props().value).toBe("");
+        expect(board.find(Square).at(6).props().value).toBe("");
+    });
 });
