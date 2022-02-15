@@ -195,4 +195,10 @@ describe("The GameBoard component state", () => {
     it("should render the RewindGameButton component", () => {
         expect(board.find(RewindGameButton).html()).toContain("Rewind Game");
     });
+
+    it("should rewind the game state one step", () => {
+        board.find(Square).at(2).props().clickHandler();
+        board.find(RewindGameButton).props().rewindClickHandler();
+        expect(board.find(Square).at(2).props().value).toBe("");
+    });
 });
