@@ -78,7 +78,6 @@ a {
 
 #reset-game {
   outline: 0;
-  border: 0;
   border-radius: 5px;
   padding: .25em;
   background-color: #B40000;
@@ -88,6 +87,19 @@ a {
 }
 #reset-game:hover {
   background-color: #FF0000;
+  border: 1px solid #000;
+}
+
+#rewind-game {
+  outline: 0;
+  padding: .25em;
+  border: 1px solid #005F7A;
+  background-color: #005F7A;
+  color: #FFFFFF;
+  font-size: 1em;
+}
+#rewind-game:hover {
+  background-color: #00819D;
   border: 1px solid #000;
 }
 
