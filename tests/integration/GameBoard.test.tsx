@@ -15,7 +15,7 @@ describe("The component is rendered", () => {
     });
     
     it("renders the GameBoard component without crashing, and ensures that the board has 9 Square components", () => {
-        board.find('.square').forEach((square: any) => {
+        board.find(Square).forEach((square: any) => {
             expect(square).toHaveLength(1);
         });
     });
